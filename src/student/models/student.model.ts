@@ -39,7 +39,9 @@ export class Student extends Model<Student, StudentAttrs> {
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
-  })
+  })git remote add origin https://github.com/shahbozmamatkarimov/mytest.git
+  git branch -M main
+  git push -u origin main
   part3: number;
 
   @Column({

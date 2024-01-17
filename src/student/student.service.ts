@@ -99,11 +99,10 @@ export class StudentService {
       const part1: any = await this.part1Service.getAll();
       const part2: any = await this.part2Service.getAll();
       parts.push(part1, part2);
-      // console.log(part1, part2);
 
       let l: number;
       let randomNumber: number;
-      let _tests: any = [];
+      // let _tests: any = [];
       let tests: any = {};
       for (let i of parts) {
         if (!i.data?.part?.length) {
@@ -115,51 +114,51 @@ export class StudentService {
         }
         l = i.data?.part?.length;
         randomNumber = Math.floor(Math.random() * l);
-        _tests.push(i.data?.part[randomNumber]);
+        tests.push(i.data?.part[randomNumber]);
       }
 
-      const part = [];
+      // const part = [];
 
-      for (let i of _tests[0]?.part1) {
-        const data = await axios.post('https://streamlabs.com/polly/speak', {
-          voice: 'Joey',
-          // voice: 'Joanna',
-          text: i,
-        });
-        if (data.status == 200) {
-          part.push(data.data.speak_url);
-        }
-      }
+      // for (let i of _tests[0]?.part1) {
+      //   const data = await axios.post('https://streamlabs.com/polly/speak', {
+      //     voice: 'Joey',
+      //     // voice: 'Joanna',
+      //     text: i,
+      //   });
+      //   if (data.status == 200) {
+      //     part.push(data.data.speak_url);
+      //   }
+      // }
 
-      tests.part1 = Object.assign({}, _tests[0].dataValues, { _part1: part });
+      // tests.part1 = Object.assign({}, _tests[0].dataValues, { _part1: part });
 
-      for (let i of _tests[1]?.part2) {
-        const data = await axios.post('https://streamlabs.com/polly/speak', {
-          voice: 'Joey',
-          // voice: 'Joanna',
-          text: i,
-        });
-        if (data.status == 200) {
-          part.push(data.data.speak_url);
-        }
-      }      
-      tests.part2 = Object.assign({}, _tests[1]?.dataValues, { _part2: part });
+      // for (let i of _tests[1]?.part2) {
+      //   const data = await axios.post('https://streamlabs.com/polly/speak', {
+      //     voice: 'Joey',
+      //     // voice: 'Joanna',
+      //     text: i,
+      //   });
+      //   if (data.status == 200) {
+      //     part.push(data.data.speak_url);
+      //   }
+      // }      
+      // tests.part2 = Object.assign({}, _tests[1]?.dataValues, { _part2: part });
 
-      for (let i of _tests[1]?.part3[0]?.part3) {
-        const data = await axios.post('https://streamlabs.com/polly/speak', {
-          voice: 'Joey',
-          // voice: 'Joanna',
-          text: i,
-        });
-        if (data.status == 200) {
-          part.push(data.data.speak_url);
-        }
-      }
+      // for (let i of _tests[1]?.part3[0]?.part3) {
+      //   const data = await axios.post('https://streamlabs.com/polly/speak', {
+      //     voice: 'Joey',
+      //     // voice: 'Joanna',
+      //     text: i,
+      //   });
+      //   if (data.status == 200) {
+      //     part.push(data.data.speak_url);
+      //   }
+      // }
 
-      delete tests.part2?.part3;
+      // delete tests.part2?.part3;
 
     
-      tests.part3 = Object.assign({}, _tests[1]?.part3[0]?.dataValues, { _part3: part });
+      // tests.part3 = Object.assign({}, _tests[1]?.part3[0]?.dataValues, { _part3: part });
 
       return {
         statusCode: HttpStatus.OK,

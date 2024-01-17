@@ -103,7 +103,7 @@ export class StudentService {
       let l: number;
       let randomNumber: number;
       // let _tests: any = [];
-      let tests: any = {};
+      let tests: any = [];
       for (let i of parts) {
         if (!i.data?.part?.length) {
           return {

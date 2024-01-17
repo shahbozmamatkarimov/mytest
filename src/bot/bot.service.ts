@@ -77,7 +77,7 @@ part3: ${'\n' + part2.data?.part2?.part3[0]?.part3?.join('\n')}
         { source: file_name.buffer },
         { caption },
       );
-      await this.fileService.deleteFile(file_name);
+      // await this.fileService.deleteFile(file_name);
       console.log('Audio sent successfully');
     } catch (error) {
       console.error('Error sending audio:', error);

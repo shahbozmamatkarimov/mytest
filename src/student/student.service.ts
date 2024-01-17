@@ -51,7 +51,7 @@ export class StudentService {
       const part2 = await this.part2Service.getById(+studentDto.part2);
 
       // const file_name:string = await this.fileService.createFile(audio, full_name);
-      this.botService.sendAudio(audio, studentDto.full_name, part1, part2);
+      await this.botService.sendAudio(audio, studentDto.full_name, part1, part2);
 
       return {
         status: HttpStatus.OK,

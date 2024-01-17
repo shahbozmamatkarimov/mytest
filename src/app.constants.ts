@@ -1,1 +1,1 @@
-export const BOT_NAME = 'nestjsTestingBot';
+export const BOT_NAME = 'nestjsTestingBot'; 

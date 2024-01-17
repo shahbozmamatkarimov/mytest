@@ -6,7 +6,7 @@ import { Admin } from './models/admin.models';
 
 @Module({
   imports: [SequelizeModule.forFeature([Admin])],
-  controllers: [AdminController],
+  controllers: [AdminController], 
   providers: [AdminService],
 })
 export class AdminModule {}

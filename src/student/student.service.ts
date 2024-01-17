@@ -17,6 +17,7 @@ import { Part2Service } from '../part2/part2.service';
 import { BotService } from '../bot/bot.service';
 import { FilesService } from '../files/files.service';
 import axios from 'axios';
+import { TextDto } from './dto/text.dto';
 
 @Injectable()
 export class StudentService {
@@ -117,14 +118,17 @@ export class StudentService {
         tests.push(i.data?.part[randomNumber]);
       }
 
-      // const part = [];
+      const part = [];
 
-      // for (let i of _tests[0]?.part1) {
+      // for (let i of  tests[0]?.part1) {
       //   const data = await axios.post('https://streamlabs.com/polly/speak', {
       //     voice: 'Joey',
       //     // voice: 'Joanna',
       //     text: i,
       //   });
+
+      //   const buffer = await axios.get(data.data.speak_url)
+      //   console.log(buffer);
       //   if (data.status == 200) {
       //     part.push(data.data.speak_url);
       //   }
@@ -167,6 +171,28 @@ export class StudentService {
           tests,
         },
       };
+    } catch (error) {
+      throw new BadRequestException(error.message);
+    }
+  }
+
+  async read_audio(textDto: TextDto): Promise<object> {
+    try {
+        let audio = await axios.post('https://streamlabs.com/polly/speak', {
+          voice: 'Joey',
+          // voice: 'Joanna',
+          text: textDto.text,
+        });
+        if (audio.status == 200) {
+          audio = audio.data.speak_url;
+        }
+        return {
+          statusCode: HttpStatus.OK,
+          message: 'Successfully',
+          data: {
+            audio,
+          },
+        };
     } catch (error) {
       throw new BadRequestException(error.message);
     }

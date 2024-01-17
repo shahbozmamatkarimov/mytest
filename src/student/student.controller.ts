@@ -25,6 +25,7 @@ import { StudentService } from './student.service';
 import { StudentDto } from './dto/create.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ImageValidationPipe } from '../pipes/image-validation.pipe';
+import { TextDto } from './dto/text.dto';
 
 @ApiTags('Student')
 @Controller('student')
@@ -68,11 +69,18 @@ export class StudentController {
     return this.studentService.getAll(page, limit);
   }
 
+  @ApiOperation({ summary: 'Convert text to audio' })
+  @Post('/read_audio')
+  read_audio(@Body() textDto: TextDto) {
+    return this.studentService.read_audio(textDto);
+  }
+
   @ApiOperation({ summary: 'Get all tests by random' })
   @Get('/:uuid')
   get_test(@Param('uuid') uuid: string) {
     return this.studentService.get_test(uuid);
   }
+
 
   @ApiOperation({ summary: 'Delete student by ID' })
   @UseGuards(AuthGuard)

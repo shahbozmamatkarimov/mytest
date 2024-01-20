@@ -14,6 +14,7 @@ import { TelegrafModule } from 'nestjs-telegraf';
 import { BOT_NAME } from './app.constants';
 import { BotModule } from './bot/bot.module';
 import { Part3Module } from './part3/part3.module';
+import { WritingModule } from './writing/writing.module';
 
 @Module({
   imports: [
@@ -46,10 +47,11 @@ import { Part3Module } from './part3/part3.module';
     AdminModule,
     StudentModule,
     Part1Module,
-    Part2Module,
+    Part2Module, 
     Part3Module,
     UuidModule,
-    BotModule,
+    BotModule, 
+    WritingModule,
     // FilesModule,
   ],
 })

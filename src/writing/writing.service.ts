@@ -7,7 +7,6 @@ import {
 import { InjectModel } from '@nestjs/sequelize';
 import { Writing } from './models/writing.model';
 import { WritingDto } from './dto/writing.dto';
-import { FindOptions, Op } from 'sequelize';
 
 @Injectable()
 export class WritingService {

@@ -22,8 +22,8 @@ export class WritingController {
 
   @ApiOperation({ summary: 'Create a new writing' })
   @Post()
-  createWriting(@Body() writingDto: WritingDto[]) {
-    return this.writingService.createWriting(writingDto);
+  createWriting(@Body() writingDto: WritingDto) {
+    return this.writingService.create(writingDto);
   }
 
   @ApiOperation({ summary: 'Update writing by id' })
@@ -45,14 +45,3 @@ export class WritingController {
     return this.writingService.delete(id);
   }
 }
-
-[
-  {
-    "task_number": 1,
-    "word_limit": 250,
-    "time_limit": 50,
-    "task_description": 'lorem lorem lorem',
-    "task_title": 'lorem loream loream',
-    "in_task": ['savol 1', 'savol 2', 'savol 3', 'savol 4']
-  }
-]

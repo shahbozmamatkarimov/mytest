@@ -17,20 +17,7 @@ export class WritingService {
 
   async create(writingDto: WritingDto): Promise<object> {
     try {
-      console.log(writingDto);
-      return this.writingRepository.create(writingDto);
-    } catch (error) {
-      throw new BadRequestException(error.message);
-    }
-  }
-
-  async createWriting(writingDto: WritingDto[]): Promise<object> {
-    try {
-      const writing = [];
-      for (let i of writingDto) {
-        const task = await this.create(i);
-        writing.push(task);
-      }
+      const writing = await this.writingRepository.create(writingDto);
       return {
         statusCode: HttpStatus.OK,
         message: 'Created successfully',
